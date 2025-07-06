@@ -1,0 +1,5 @@
+Place your audio files in this directory:
+- redwims-sparkle.mp3
+- redwims-sparkle.mp4 (as backup)
+
+Make sure the audio files are in the correct format and properly encoded.

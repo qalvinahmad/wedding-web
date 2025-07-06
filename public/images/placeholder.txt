@@ -1,0 +1,9 @@
+Place your image files in this directory:
+- hero-bg.jpg (for hero background)
+- bride-photo.jpg
+- groom-photo.jpg
+- bride-family.jpg
+- groom-family.jpg
+- gallery-1.jpg to gallery-6.jpg
+
+Make sure images are optimized for web use.
