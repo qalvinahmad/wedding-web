@@ -83,5 +83,4 @@ export default function MusicPlayer() {
     </motion.div>
   )
 }
-  )
-}
+
