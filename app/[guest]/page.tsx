@@ -1,23 +1,57 @@
-import GuestInvitation from '@/components/templates/GuestInvitation';
-import { getGuestData } from '@/lib/googleSheets';
-import { notFound } from 'next/navigation';
+import Hero from "@/components/organisms/Hero";
+import MusicPlayer from "../../components/molecules/MusicPlayer";
+import CoupleIntroduction from "../../components/organisms/CoupleIntroduction";
+import DressCode from "../../components/organisms/DressCode";
+import EventInfo from "../../components/organisms/EventInfo";
+import Gallery from "../../components/organisms/Gallery";
+import Header from "../../components/organisms/Header";
+import LoveStory from "../../components/organisms/LoveStory";
+import WeddingGift from "../../components/organisms/WeddingGift";
+import Wishes from "../../components/organisms/Wishes";
 
 interface PageProps {
-  params: {
-    guest: string;
-  };
+  params: Promise<{ guest: string }>;
 }
 
 export default async function GuestPage({ params }: PageProps) {
-  // Decode and clean the guest name from URL
-  const guestName = decodeURIComponent(params.guest).toLowerCase();
-  const guestData = await getGuestData(guestName);
+  const { guest } = await params;
   
-  if (!guestData) {
-    notFound();
-  }
-  
-  return <GuestInvitation guestData={guestData} />;
+  // Decode the guest parameter and create guest data
+  const guestData = {
+    name: decodeURIComponent(guest.replace(/\+/g, ' ')),
+    // You can add more guest-specific data as needed
+  };
+
+  return (
+    <div className="min-h-screen">
+      <MusicPlayer />
+      <Header />
+      
+      {/* Hero outside container to be full width */}
+      <div id="home">
+        <Hero guestData={guestData} />
+      </div>
+      
+      {/* Container with consistent padding for other sections */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-48 xl:px-20">
+        <div id="love-story">
+          <LoveStory />
+        </div>
+        <CoupleIntroduction />
+        <div id="acara">
+          <EventInfo />
+        </div>
+        <div id="dresscode">
+          <DressCode />
+        </div>
+        <div id="gallery">
+          <Gallery />
+        </div>
+        <Wishes />
+        <WeddingGift />
+      </div>
+    </div>
+  );
 }
 
 // Optional: Generate static paths for better performance
@@ -29,4 +63,5 @@ export async function generateStaticParams() {
   //   guest: guest.name.replace(/\s+/g, '').toLowerCase(),
   // }));
   return [];
+}
 }

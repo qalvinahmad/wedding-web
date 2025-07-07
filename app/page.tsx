@@ -9,7 +9,6 @@ import LoveStory from "../components/organisms/LoveStory";
 import WeddingGift from "../components/organisms/WeddingGift";
 import Wishes from "../components/organisms/Wishes";
 
-
 export default function Home() {
   return (
     <div className="min-h-screen">
@@ -41,4 +40,5 @@ export default function Home() {
       </div>
     </div>
   );
+}
 }
